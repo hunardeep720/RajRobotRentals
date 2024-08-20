@@ -1,0 +1,52 @@
+﻿@page "/rajrentals"
+<h1>Rentals</h1>
+
+<h2>Quote Generator</h2>
+
+The selected robot is @*<span @bind-="robot">Model XYZ</span>*@ @robot and the duration is
+<input type="number" @bind="duration" @onclick="NumberOfDays"/> day(s) and the total cost is $@cost
+
+<button @onclick="SwitchModel">Switch Model</button>
+@*<button  @onclick="NumberOfDays">Change Number Of Days</button>*@
+@*<button @onclick="TotalCost">Check Total Cost</button>*@
+@code {
+    public string robot { get; set; } = "Model XYZ";
+    public int duration { get; set; } = 0;
+    public double cost { get; set; } = 0.0;
+
+    public void SwitchModel()
+    {
+        if (this.robot.Equals("Model XYZ"))
+        {
+            this.robot = "Model CPRG";
+            this.cost = 213 * this.duration;
+        }
+        else
+        {
+            this.robot = "Model XYZ";
+            this.cost = 100 * this.duration;
+        }
+    }
+    public void NumberOfDays()
+    {
+        if (this.robot.Equals("Model XYZ"))
+        {
+            this.cost = 100 * this.duration;
+        }
+        else
+        {
+            this.cost = 213 * this.duration;
+        }
+    }
+    //public void TotalCost()
+    //{
+    //    if (this.robot.Equals("Model XYZ"))
+    //    {
+    //        this.cost = 100 * this.duration;
+    //    }
+    //    else
+    //    {
+    //        this.cost = 213 * this.duration;
+    //    }
+    //}
+}
